@@ -15,7 +15,7 @@ class Dialog;
 
 QT_END_NAMESPACE
 
-class Dialog : public QDialog {
+class Dialog final : public QDialog {
     Q_OBJECT
 
 public:
