@@ -3,7 +3,7 @@ project(learning)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(samp1_1)
-add_subdirectory(samp2_1)
-add_subdirectory(samp2_2)
-add_subdirectory(samp2_3)
+add_subdirectory(chapter1/samp1_1)
+add_subdirectory(chapter2/samp2_1)
+add_subdirectory(chapter2/samp2_2)
+add_subdirectory(chapter2/samp2_3)
