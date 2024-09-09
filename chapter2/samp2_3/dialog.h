@@ -16,7 +16,7 @@ class Dialog;
 QT_END_NAMESPACE
 
 class Dialog final : public QDialog {
-    Q_OBJECT
+    Q_OBJECT /// 确保该类可以使用元对象系统的特性
 
 public:
     explicit Dialog(QWidget* parent = nullptr);
