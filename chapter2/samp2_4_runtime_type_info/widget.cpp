@@ -10,29 +10,29 @@ Widget::Widget(QWidget* parent)
     ui->setupUi(this);
     setWindowTitle("运行时类型信息");
 
-    // 1. 函数 QMetaObject::className()
+    /// 1. 函数 QMetaObject::className()
     const auto         push_button        = new QPushButton();
     const QMetaObject* meta_object        = push_button->metaObject(); /// 获取对象的元对象指针
     const auto         string_push_button = QString(meta_object->className()); /// 获取该元对象类名
 
-    // 2. 函数 QObject::inherits()
+    /// 2. 函数 QObject::inherits()
     const bool result1 = push_button->inherits("QPushButton"); /// 判断一个对象是否继承自某个类的实例
     const bool result2 = push_button->inherits("QObject"); /// 如果多重继承，只要符合其中一个父类，即返回true
     const bool result3 = push_button->inherits("QWidget");
     const bool result4 = push_button->inherits("QCheckBox");
 
-    // 3. 函数 QMetaObject::superClass()
+    /// 3. 函数 QMetaObject::superClass()
     const auto string_push_button_parent = QString(meta_object->superClass()->className()); /// 返回元对象所描述类的父类元对象
 
-    // 4. 函数 qobject_cast()
+    /// 4. 函数 qobject_cast()
     QObject*   object_button    = new QPushButton(); /// 创建QPushButton，但是使用QObject指针
     const auto button_name      = QString(object_button->metaObject()->className());
     const auto real_button      = qobject_cast<QPushButton*>(object_button); /// 对于QOject及其子类的对象，实现动态类型转换
     const auto real_button_name = QString(real_button->metaObject()->className());
 
-    // QCheckBox* false_button = qobject_cast<QPushButton*>(object_button);
-    // 转换失败，对象指针类型不同，因为QCheckBox不是QPushButton的父类。
-    // 使用qobject_cast()的好处是不需要C++编译器开启RTTI的支持。
+    /// QCheckBox* false_button = qobject_cast<QPushButton*>(object_button);
+    /// 转换失败，对象指针类型不同，因为QCheckBox不是QPushButton的父类。
+    /// 使用qobject_cast()的好处是不需要C++编译器开启RTTI的支持。
 
     // 显示
     QString display = "Welcome!\n";

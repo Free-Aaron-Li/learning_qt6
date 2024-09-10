@@ -1,5 +1,6 @@
 #include "dialog.h"
 
+#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QPushButton>
 
@@ -34,13 +35,28 @@ Dialog::InitUI() {
     h_box_layout2->addWidget(radio_button_blue_);
 
     /// 3. 创建三个逻辑按钮，并水平布局
-    push_button_confirm_ = new QPushButton("确定");
-    push_button_cancel_  = new QPushButton("取消");
-    push_button_quit_    = new QPushButton("退出");
-    auto* h_box_layout3  = new QHBoxLayout();
+    push_button_confirm_    = new QPushButton("确定");
+    push_button_cancel_     = new QPushButton("取消");
+    push_button_quit_       = new QPushButton("退出");
+    auto* group_box_buttons = new QGroupBox("test"); /// 创建分组框并加入到水平布局中
+
+    auto* h_box_layout3 = new QHBoxLayout(group_box_buttons);
     h_box_layout3->addWidget(push_button_confirm_);
     h_box_layout3->addWidget(push_button_cancel_);
     h_box_layout3->addWidget(push_button_quit_);
+
+    group_box_buttons->setLayout(h_box_layout3); /// 将group_box的布局设为上述水平布局
+
+    /// 补充：修改三个逻辑按钮名称
+    auto object_list = group_box_buttons->children(); /// 获取水平布局中的子对象序列
+    for (const auto i : object_list) {
+        /// 列表中存在多个子对象（不止上面添加到三个按钮）
+        if (const auto meta = i->metaObject(); strcmp(meta->className(), "QPushButton") == 0) {
+            /// className return const char *
+            const auto button = qobject_cast<QPushButton*>(i); /// 使用到QPushButton中的成员
+            button->setText(button->text() + "*"); /// 添加字符
+        }
+    }
 
     /// 4. 创建文本框，并设置初始化字体
     plain_text_edit_ = new QPlainTextEdit;
@@ -54,7 +70,7 @@ Dialog::InitUI() {
     v_box_layout->addLayout(h_box_layout1); /// 字体样式
     v_box_layout->addLayout(h_box_layout2); /// 字体颜色
     v_box_layout->addWidget(plain_text_edit_); /// 文本框
-    v_box_layout->addLayout(h_box_layout3); /// 逻辑按钮组合
+    v_box_layout->addWidget(group_box_buttons); /// 逻辑按钮组合
     setLayout(v_box_layout); /// 设置为窗口的主布局
 }
 
@@ -67,9 +83,9 @@ Dialog::InitSignalSlots() const {
     connect(check_box_bold_, &QCheckBox::clicked, this, &Dialog::do_check_box_bold_);
 
     /// 颜色设置单选框
-    connect(radio_button_black_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
-    connect(radio_button_red_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
-    connect(radio_button_blue_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
+    connect(radio_button_black_, &QRadioButton::clicked, this, &Dialog::do_SetFontColor);
+    connect(radio_button_red_, &QRadioButton::clicked, this, &Dialog::do_SetFontColor);
+    connect(radio_button_blue_, &QRadioButton::clicked, this, &Dialog::do_SetFontColor);
 
     /// 逻辑按钮组合
     connect(push_button_confirm_, &QCheckBox::clicked, this, &Dialog::accept);
