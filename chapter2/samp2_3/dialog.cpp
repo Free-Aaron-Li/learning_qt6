@@ -61,22 +61,20 @@ Dialog::InitUI() {
 void
 Dialog::InitSignalSlots() const {
     /// 字体设置复选框
-    connect(
-        check_box_under_, SIGNAL(clicked(bool)), this,SLOT(do_check_box_under_(bool)));
-    connect(
-        check_box_italic_, SIGNAL(clicked(bool)), this,SLOT(do_check_box_italic_(bool)));
-    connect(
-        check_box_bold_, SIGNAL(clicked(bool)), this,SLOT(do_check_box_bold_(bool)));
+    /// 采用这种方式无需出现函数参数，当出现同名的信号，Qt会自动选择
+    connect(check_box_under_, &QCheckBox::clicked, this, &Dialog::do_check_box_under_);
+    connect(check_box_italic_, &QCheckBox::clicked, this, &Dialog::do_check_box_italic_);
+    connect(check_box_bold_, &QCheckBox::clicked, this, &Dialog::do_check_box_bold_);
 
     /// 颜色设置单选框
-    connect(radio_button_black_,SIGNAL(clicked()), this,SLOT(do_SetFontColor()));
-    connect(radio_button_red_,SIGNAL(clicked()), this,SLOT(do_SetFontColor()));
-    connect(radio_button_blue_,SIGNAL(clicked()), this,SLOT(do_SetFontColor()));
+    connect(radio_button_black_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
+    connect(radio_button_red_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
+    connect(radio_button_blue_, &QCheckBox::clicked, this, &Dialog::do_SetFontColor);
 
     /// 逻辑按钮组合
-    connect(push_button_confirm_,SIGNAL(clicked()), this,SLOT(accept()));
-    connect(push_button_cancel_,SIGNAL(clicked()), this,SLOT(reject()));
-    connect(push_button_quit_,SIGNAL(clicked()), this,SLOT(close()));
+    connect(push_button_confirm_, &QCheckBox::clicked, this, &Dialog::accept);
+    connect(push_button_cancel_, &QCheckBox::clicked, this, &Dialog::accept);
+    connect(push_button_quit_, &QCheckBox::clicked, this, &Dialog::accept);
 }
 
 
