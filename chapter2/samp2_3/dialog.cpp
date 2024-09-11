@@ -48,6 +48,8 @@ Dialog::InitUI() {
     group_box_buttons->setLayout(h_box_layout3); /// 将group_box的布局设为上述水平布局
 
     /// 补充：修改三个逻辑按钮名称
+    /// @{
+    /// 方法一：使用children()函数
     auto object_list = group_box_buttons->children(); /// 获取水平布局中的子对象序列
     for (const auto i : object_list) {
         /// 列表中存在多个子对象（不止上面添加到三个按钮）
@@ -57,6 +59,12 @@ Dialog::InitUI() {
             button->setText(button->text() + "*"); /// 添加字符
         }
     }
+
+    /// 方法二：使用findChildren()函数
+    const auto buttons_list = group_box_buttons->findChildren<QPushButton*>();
+    /// 无需对bttons_list中对象进行类型判断
+    for (const auto button : buttons_list) { button->setText(button->text() + "*"); }
+    /// @}
 
     /// 4. 创建文本框，并设置初始化字体
     plain_text_edit_ = new QPlainTextEdit;
