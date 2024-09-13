@@ -44,5 +44,7 @@ private slots:
     void on_pushbutton_display_metainfo_clicked() const;
 
     void print_properties(const QObject* obj) const;
+
+    static void test();
 };
 #endif  // WIDGET_H

@@ -1,4 +1,7 @@
 #include "widget.h"
+
+#include <iostream>
+
 #include "./ui_widget.h"
 
 Widget::Widget(QWidget* parent)
@@ -78,9 +81,10 @@ Widget::on_pushbutton_display_metainfo_clicked() const {
     for (int i = meta->classInfoOffset(); i < meta->classInfoCount(); ++i) {
         auto class_info = meta->classInfo(i);
         ui->plaintext_edit->appendPlainText(
-            QString("name: %1,\t value: %2\n").arg(class_info.name()).arg(class_info.value()));
+            QString("name: %1,\t value: %2\n").arg(class_info.name(), class_info.value()));
     }
     ui->plaintext_edit->appendPlainText("-----------\n");
+    test();
 }
 
 void
@@ -89,8 +93,23 @@ Widget::print_properties(const QObject* obj) const {
     for (int i = meta->propertyOffset(); i < meta->propertyCount(); ++i) {
         const auto property_name   = meta->property(i).name(); /// 需含<QtCore/QMetaProperty>头文件
         const auto property_value  = obj->property(property_name).toString();
-        const auto properties_info = QString("property type: %1,\t value: %2\n").arg(property_name).arg(
+        const auto properties_info = QString("property type: %1,\t value: %2\n").arg(
+            property_name,
             property_value);
         ui->plaintext_edit->appendPlainText(properties_info);
+    }
+}
+
+void
+Widget::test() {
+    QMultiMap<QString, int> num1, num2;
+    num1.insert("rout", 100000);
+    num1.insert("rout", 200000); /// num1.size()=2
+    num2.insert("rout", 300000); /// num2.size()=1
+    const QMultiMap<QString, int> num3 = num1 + num2; /// num3.size()=3
+
+    const auto values = num1.values("rout");
+    for (const auto value : values) {
+        std::cout << value << "\t"; /// 输出
     }
 }
