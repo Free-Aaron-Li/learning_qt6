@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Copyright (c) 2024. aaron.
+  -
+  - This program is under the GPL-3.0 license.
+  - if you have not received it or the program has a bug, please let me know:
+  - <communicate_aaron@outlook.com>.
+  -->
+
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>800</width>
-    <height>600</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
- </widget>
- <resources/>
- <connections/>
+    <class>Dialog</class>
+    <widget class="QDialog" name="Dialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>800</width>
+                <height>600</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+    </widget>
+    <resources/>
+    <connections/>
 </ui>

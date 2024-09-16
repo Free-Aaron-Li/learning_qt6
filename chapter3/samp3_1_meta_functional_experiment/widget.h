@@ -1,3 +1,9 @@
+// Copyright (c) 2024. aaron.
+//
+// This program is under the GPL-3.0 license.
+// if you have not received it or the program has a bug, please let me know:
+// <communicate_aaron@outlook.com>.
+
 #ifndef WIDGET_H
 #define WIDGET_H
 
@@ -45,6 +51,8 @@ private slots:
 
     void print_properties(const QObject* obj) const;
 
-    static void test();
+    static void TestContainer(); /// 关联容器
+
+    static void TestIterator(); /// 迭代器
 };
 #endif  // WIDGET_H

@@ -1,3 +1,9 @@
+// Copyright (c) 2024. aaron.
+//
+// This program is under the GPL-3.0 license.
+// if you have not received it or the program has a bug, please let me know:
+// <communicate_aaron@outlook.com>.
+
 #include "widget.h"
 
 #include <iostream>
@@ -84,7 +90,10 @@ Widget::on_pushbutton_display_metainfo_clicked() const {
             QString("name: %1,\t value: %2\n").arg(class_info.name(), class_info.value()));
     }
     ui->plaintext_edit->appendPlainText("-----------\n");
-    test();
+
+    /// 测试项
+    TestContainer();
+    TestIterator();
 }
 
 void
@@ -101,15 +110,65 @@ Widget::print_properties(const QObject* obj) const {
 }
 
 void
-Widget::test() {
+Widget::TestContainer() {
+    QMultiMap<QString, int> num1, num2;
+    num1.insert("rout", 100000);
+    num1.insert("rout", 200000); /// num1.size()=2
+    num2.insert("rout", 300000); /// num2.size()=1
+    const auto num3 = num1 + num2; /// num3.size()=3
+
+    const auto values = num1.values("rout");
+    for (const auto value : values) {
+        std::cout << value << "\t"; /// 输出
+    }
+}
+
+void
+Widget::TestIterator() {
+    /**
+     * 1. 顺序容器
+     */
+    QList<QString> list_string;
+    list_string << "A" << "B" << "C" << "D" << "E" << "F";
+    for (QList<QString>::const_iterator iterator = list_string.constBegin(); iterator != list_string.constEnd(); ++
+         iterator) {
+        /// 只读迭代器，逐项读出
+        qDebug() << *iterator; /// Debug优先级更高，会在缓冲区中优先读出。
+    }
+
+    for (auto reverse_iterator = list_string.rbegin();
+         reverse_iterator != list_string.rend(); ++reverse_iterator) {
+        /// 反向修改项内容为小写
+        *reverse_iterator = reverse_iterator->toLower(); /// *运算符返回数据项内容
+    }
+
+    /**
+     * 2. 关联容器
+     */
     QMultiMap<QString, int> num1, num2;
     num1.insert("rout", 100000);
     num1.insert("rout", 200000); /// num1.size()=2
     num2.insert("rout", 300000); /// num2.size()=1
     const QMultiMap<QString, int> num3 = num1 + num2; /// num3.size()=3
 
-    const auto values = num1.values("rout");
-    for (const auto value : values) {
-        std::cout << value << "\t"; /// 输出
+    for (QMultiMap<QString, int>::const_iterator iterator = num3.constBegin(); iterator != num3.constEnd(); ++
+         iterator) {
+        /// 所有项的键和值输出
+        qDebug() << iterator.key() << ":" << iterator.value();
     }
+
+    /**
+     * 3. foreach 遍历
+     */
+    foreach(const QString& value, list_string) {
+        /// value必须是后者容器内类型
+        if (value == "c") { break; }
+        qDebug() << value;
+    }
+
+    QHash<QString, QString> string_hash;
+    string_hash.insert("Hello", "World");
+    string_hash.insert("Welcome", "China");
+
+
 }
