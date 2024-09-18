@@ -9,6 +9,8 @@
 
 #include <QWidget>
 #include <QtCore/QMetaProperty>
+#include <QRandomGenerator64>
+#include <QDateTime>
 #include "tperson.h"
 
 QT_BEGIN_NAMESPACE
@@ -50,9 +52,13 @@ private slots:
 
   void print_properties(const QObject* obj) const;
 
-  static void TestContainer(); /// 关联容器
+  static inline void TestContainer(); /// 关联容器
 
-  static void TestIterator(); /// 迭代器
+  static inline void TestIterator(); /// 迭代器
 
-  static void TestQVariant(); /// QVariant类
+  void TestQVariant() const; /// QVariant类
+
+  static inline void TestRandomGenerator();
 };
+
+#endif

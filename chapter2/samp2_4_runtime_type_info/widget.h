@@ -18,13 +18,13 @@ class Widget;
 
 QT_END_NAMESPACE
 
-class Widget : public QWidget {
+class Widget final : public QWidget {
     Q_OBJECT
 
 public:
     Widget(QWidget* parent = nullptr);
 
-    ~Widget();
+    ~Widget() override;
 
 private:
     Ui::Widget* ui;
