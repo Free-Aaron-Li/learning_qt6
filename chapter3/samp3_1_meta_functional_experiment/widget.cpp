@@ -54,7 +54,7 @@ Widget::do_ageChanged(const int age) const {
     const int person_age = person->age();
     /// person_age             = person->property("age").toInt(); /// 通过属性获得
     const auto person_info = QString("name: %1,\t sex: %2,\t age: %3\n").
-                             arg(person_name).arg(person_sex).arg(
+                             arg(person_name, person_sex).arg(
                                  person_age);
     ui->plaintext_edit->appendPlainText(person_info);
 }
@@ -132,7 +132,7 @@ Widget::TestContainer() {
     num2.insert("rout", 300000); /// num2.size()=1
     const auto num3 = num1 + num2; /// num3.size()=3
 
-    const auto values = num1.values("rout");
+    const auto values = num3.values("rout");
     for (const auto value: values) {
         qDebug() << value << "\t"; /// 输出
     }
@@ -225,7 +225,7 @@ Widget::TestQVariant() const {
 inline void Widget::TestRandomGenerator() {
     /// 生成随机数，比较随机数因随机数种子而发生的变化
     const auto const_seed = QDateTime::currentMSecsSinceEpoch() - 1;
-    QRandomGenerator64 *const rand1 = new QRandomGenerator64(const_seed);
+    const auto rand1 = new QRandomGenerator64(const_seed);
     const auto rand2 = new QRandomGenerator64(const_seed);
     const auto rand3 = new QRandomGenerator64(QDateTime::currentMSecsSinceEpoch());
     for (int i = 0; i < 5; ++i) {
@@ -267,7 +267,7 @@ inline void Widget::TestRandomGenerator() {
         qDebug("%u", QRandomGenerator64::system()->bounded(60, 101));
     }
 
-    delete(rand1);
-    delete(rand2);
-    delete(rand3);
+    delete rand1;
+    delete rand2;
+    delete rand3;
 }
