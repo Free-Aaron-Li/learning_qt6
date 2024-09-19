@@ -6,8 +6,6 @@
 
 #include "widget.h"
 #include "./ui_widget.h"
-#include "../../chapter2/samp2_2/dialog.h"
-#include "../../chapter2/samp2_2/dialog.h"
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
