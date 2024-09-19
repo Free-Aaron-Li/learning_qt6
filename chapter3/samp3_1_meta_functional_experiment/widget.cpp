@@ -36,11 +36,15 @@ Widget::Widget(QWidget *parent) :
     ui->spinbox_girl->setProperty("isGirl", false);
     /// 连接（以两种方式表示）
     connect(
-        ui->spinbox_boy, &QSpinBox::valueChanged, this,
-        &Widget::do_spinChanged);
+            ui->spinbox_boy,
+            &QSpinBox::valueChanged,
+            this,
+            &Widget::do_spinChanged);
     connect(
-        ui->spinbox_girl, SIGNAL(valueChanged(int)), this,
-        SLOT(do_spinChanged(int)));
+            ui->spinbox_girl,
+            SIGNAL(valueChanged(int)),
+            this,
+            SLOT(do_spinChanged(int)));
 }
 
 Widget::~Widget() { delete ui; }
@@ -48,14 +52,14 @@ Widget::~Widget() { delete ui; }
 void
 Widget::do_ageChanged(const int age) const {
     Q_UNUSED(age);
-    const auto person = qobject_cast<TPerson *>(sender()); /// 获取信号发射者
+    const auto person      = qobject_cast<TPerson *>(sender()); /// 获取信号发射者
     const auto person_name = person->property("name").toString();
-    const auto person_sex = person->property("sex").toString();
-    const int person_age = person->age();
+    const auto person_sex  = person->property("sex").toString();
+    const int  person_age  = person->age();
     /// person_age             = person->property("age").toInt(); /// 通过属性获得
     const auto person_info = QString("name: %1,\t sex: %2,\t age: %3\n").
                              arg(person_name, person_sex).arg(
-                                 person_age);
+                                     person_age);
     ui->plaintext_edit->appendPlainText(person_info);
 }
 
@@ -79,11 +83,11 @@ Widget::on_pushbutton_clean_clicked() const { ui->plaintext_edit->clear(); }
 
 void
 Widget::on_pushbutton_display_metainfo_clicked() const {
-    const auto obj = boy;
+    const auto obj  = boy;
     const auto meta = obj->metaObject();
     ui->plaintext_edit->clear();
     ui->plaintext_edit->appendPlainText(
-        QString("-----------\nClass name: %1\n").arg(meta->className()));
+            QString("-----------\nClass name: %1\n").arg(meta->className()));
     /// 打印属性信息
     ui->plaintext_edit->appendPlainText("-----------\nProperties:\n");
     print_properties(boy);
@@ -95,9 +99,9 @@ Widget::on_pushbutton_display_metainfo_clicked() const {
     for (int i = meta->classInfoOffset(); i < meta->classInfoCount(); ++i) {
         auto class_info = meta->classInfo(i);
         ui->plaintext_edit->appendPlainText(
-            QString("name: %1,\t value: %2\n").arg(
-                class_info.name(),
-                class_info.value()));
+                QString("name: %1,\t value: %2\n").arg(
+                        class_info.name(),
+                        class_info.value()));
     }
     ui->plaintext_edit->appendPlainText("-----------\n");
 
@@ -114,12 +118,12 @@ Widget::print_properties(const QObject *obj) const {
     for (int i = meta->propertyOffset(); i < meta->propertyCount(); ++i) {
         const auto property_name = meta->property(i).name();
         /// 需含<QtCore/QMetaProperty>头文件
-        const auto property_value = obj->property(property_name).toString();
+        const auto property_value  = obj->property(property_name).toString();
         const auto properties_info = QString("property type: %1,\t value: %2\n")
                 .
                 arg(
-                    property_name,
-                    property_value);
+                        property_name,
+                        property_value);
         ui->plaintext_edit->appendPlainText(properties_info);
     }
 }
@@ -128,12 +132,12 @@ inline void
 Widget::TestContainer() {
     QMultiMap<QString, int> num1, num2;
     num1.insert("rout", 100000);
-    num1.insert("rout", 200000); /// num1.size()=2
-    num2.insert("rout", 300000); /// num2.size()=1
+    num1.insert("rout", 200000);   /// num1.size()=2
+    num2.insert("rout", 300000);   /// num2.size()=1
     const auto num3 = num1 + num2; /// num3.size()=3
 
     const auto values = num3.values("rout");
-    for (const auto value: values) {
+    for (const auto value : values) {
         qDebug() << value << "\t"; /// 输出
     }
 }
@@ -163,8 +167,8 @@ Widget::TestIterator() {
      */
     QMultiMap<QString, int> num1, num2;
     num1.insert("rout", 100000);
-    num1.insert("rout", 200000); /// num1.size()=2
-    num2.insert("rout", 300000); /// num2.size()=1
+    num1.insert("rout", 200000);                /// num1.size()=2
+    num2.insert("rout", 300000);                /// num2.size()=1
     QMultiMap<QString, int> num3 = num1 + num2; /// num3.size()=3
     num3.insert("test", 1);
 
@@ -205,31 +209,33 @@ Widget::TestIterator() {
 void
 Widget::TestQVariant() const {
     /** 1. 普通类型存储 */
-    QVariant var(123); /// 默认初值
-    const QString str = var.toString(); /// str="123"，通过toT函数转换具体数据类型
-    const int var_int = var.value<int>(); /// val_int=123，value()返回某种类型数据
+    QVariant      var(123);                   /// 默认初值
+    const QString str     = var.toString();   /// str="123"，通过toT函数转换具体数据类型
+    const int     var_int = var.value<int>(); /// val_int=123，value()返回某种类型数据
     qDebug() << "str: " << str << ", var_int:" << var_int;
 
     /** 2. 字符串列表存储 */
     QStringList string_list;
     string_list << "Hello, " << "Welcome " << "China";
-    var.setValue(string_list); /// 赋予一个字符串列表
+    var.setValue(string_list);      /// 赋予一个字符串列表
     qDebug() << var.toStringList(); /// 转换为字符串列表输出（注意：不能直接输出字符串）
 
     /** 3. 模块值存储 */
-    var = ui->pushbutton_display_metainfo->font(); /// 赋予按钮字体
-    const QFont font_copy = var.value<QFont>(); /// 转换类型
-    qDebug() << var.toString();
+    var                  = ui->pushbutton_display_metainfo->font(); /// 赋予按钮字体
+    const auto font_copy = var.value<QFont>();                      /// 转换类型
+    qDebug() << font_copy.toString();
 }
 
 inline void Widget::TestRandomGenerator() {
     /// 生成随机数，比较随机数因随机数种子而发生的变化
     const auto const_seed = QDateTime::currentMSecsSinceEpoch() - 1;
-    const auto rand1 = new QRandomGenerator64(const_seed);
-    const auto rand2 = new QRandomGenerator64(const_seed);
-    const auto rand3 = new QRandomGenerator64(QDateTime::currentMSecsSinceEpoch());
+    const auto rand1      = new QRandomGenerator64(const_seed);
+    const auto rand2      = new QRandomGenerator64(const_seed);
+    const auto rand3      = new QRandomGenerator64(QDateTime::currentMSecsSinceEpoch());
     for (int i = 0; i < 5; ++i) {
-        qDebug("Random1 is %llu,\nRandom2 is %llu,\nRandom3 is %llu.\n", rand1->generate64(), rand2->generate64(),
+        qDebug("Random1 is %llu,\nRandom2 is %llu,\nRandom3 is %llu.\n",
+               rand1->generate64(),
+               rand2->generate64(),
                rand3->generate64());
     }
 
@@ -243,7 +249,7 @@ inline void Widget::TestRandomGenerator() {
     /// @{
     /// 列表形式
     QList<quint64> random_numbers;
-    random_numbers.resize(12); /// 设置列表长度
+    random_numbers.resize(12);                                                             /// 设置列表长度
     QRandomGenerator64::system()->fillRange(random_numbers.data(), random_numbers.size()); /// 填充
 
     /// 数组形式
@@ -252,11 +258,11 @@ inline void Widget::TestRandomGenerator() {
     /// @}
 
     qDebug("list is:\n");
-    for (const auto &number: random_numbers) {
+    for (const auto &number : random_numbers) {
         qDebug() << number << "\t";
     }
     qDebug("array is:\n");
-    for (const auto &number: array) {
+    for (const auto &number : array) {
         qDebug() << number << "\t";
     }
 
