@@ -32,7 +32,7 @@ auto main(int argc, char *argv[]) -> int {
     const auto    str_Hu       = QChar(str_material[1].unicode());
     QString       str_example  = "他们来自河南与河北";
     for (auto &i : str_example) {
-        if (i == str_He) {
+        if (i == str_He) { // 逻辑比较
             i = str_Hu;
         }
     }
