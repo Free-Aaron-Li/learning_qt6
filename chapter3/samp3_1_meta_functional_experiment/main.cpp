@@ -7,10 +7,10 @@
 #include "widget.h"
 #include <QApplication>
 
-int
-main(int argc, char *argv[]) {
+auto
+main(int argc, char *argv[]) -> int {
     QApplication a(argc, argv);
-    Widget w;
+    Widget       w;
     w.show();
-    return a.exec();
+    return QApplication::exec();
 }
