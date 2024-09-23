@@ -4,7 +4,7 @@
 // if you have not received it or the program has a bug, please let me know:
 // <communicate_aaron@outlook.com>.
 
-#include "mainwindow.h"
+#include "../ui/mainwindow.h"
 
 #include <QApplication>
 
