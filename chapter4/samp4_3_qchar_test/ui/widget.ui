@@ -1,225 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Copyright (c) 2024. aaron.
+  -
+  - This program is under the GPL-3.0 license.
+  - if you have not received it or the program has a bug, please let me know:
+  - <communicate_aaron@outlook.com>.
+  -->
+
 <ui version="4.0">
- <class>Widget</class>
- <widget class="QWidget" name="Widget">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>513</width>
-    <height>600</height>
-   </rect>
-  </property>
-  <property name="mouseTracking">
-   <bool>false</bool>
-  </property>
-  <property name="windowTitle">
-   <string>QChar常用功能</string>
-  </property>
-  <widget class="QGroupBox" name="groupBox_string_test">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>481</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string/>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_string_input">
-      <property name="text">
-       <string>输入字符串</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_string_input"/>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton_unicode_conversion">
-      <property name="text">
-       <string>单个字符的Unicode</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_char_input">
-      <property name="text">
-       <string>输入单个字符</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_char_input"/>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_char_judgement">
-      <property name="text">
-       <string>单个字符特性判断</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>120</y>
-     <width>481</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>其他测试和功能</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_utf16_conversion">
-      <property name="text">
-       <string>与UTF-16的转换</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_to_Latin1">
-      <property name="text">
-       <string>与Latin1的转换</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_qchar_judgement_and_replace">
-      <property name="text">
-       <string>QChar比较和替换</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_clear">
-      <property name="text">
-       <string>清空文本框</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_character_judgement">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>240</y>
-     <width>191</width>
-     <height>341</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>QChar特性判断</string>
-   </property>
-   <widget class="QWidget" name="layoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>161</width>
-      <height>292</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0">
-     <item row="5" column="0">
-      <widget class="QCheckBox" name="checkBox_isMark">
-       <property name="text">
-        <string>isMark</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QCheckBox" name="checkBox_isUpper">
-       <property name="text">
-        <string>isUpper</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QCheckBox" name="checkBox_isSpace">
-       <property name="text">
-        <string>isSpace</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QCheckBox" name="checkBox_isDigit">
-       <property name="text">
-        <string>isDIgit</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QCheckBox" name="checkBox_isLetter">
-       <property name="text">
-        <string>isLetter</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QCheckBox" name="checkBox_isSymbol">
-       <property name="text">
-        <string>isSymbol</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="0">
-      <widget class="QCheckBox" name="checkBox_isPunct">
-       <property name="text">
-        <string>isPunct</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QCheckBox" name="checkBox_isLower">
-       <property name="text">
-        <string>isLower</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QCheckBox" name="checkBox_isLetterOrNumber">
-       <property name="text">
-        <string>isLetterOrNumber</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_result_display">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>240</y>
-     <width>281</width>
-     <height>341</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>结果显示</string>
-   </property>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>261</width>
-      <height>291</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
- </widget>
- <resources/>
- <connections/>
+    <class>Widget</class>
+    <widget class="QWidget" name="Widget">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>513</width>
+                <height>600</height>
+            </rect>
+        </property>
+        <property name="mouseTracking">
+            <bool>false</bool>
+        </property>
+        <property name="windowTitle">
+            <string>QChar常用功能</string>
+        </property>
+        <widget class="QGroupBox" name="groupBox_string_test">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>10</y>
+                    <width>481</width>
+                    <height>101</height>
+                </rect>
+            </property>
+            <property name="title">
+                <string/>
+            </property>
+            <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0">
+                    <widget class="QLabel" name="label_string_input">
+                        <property name="text">
+                            <string>输入字符串</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="0" column="1">
+                    <widget class="QLineEdit" name="lineEdit_string_input"/>
+                </item>
+                <item row="0" column="2">
+                    <widget class="QPushButton" name="pushButton_unicode_conversion">
+                        <property name="text">
+                            <string>单个字符的Unicode</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="1" column="0">
+                    <widget class="QLabel" name="label_char_input">
+                        <property name="text">
+                            <string>输入单个字符</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="1" column="1">
+                    <widget class="QLineEdit" name="lineEdit_char_input"/>
+                </item>
+                <item row="1" column="2">
+                    <widget class="QPushButton" name="pushButton_char_judgement">
+                        <property name="text">
+                            <string>单个字符特性判断</string>
+                        </property>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+        <widget class="QGroupBox" name="groupBox">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>120</y>
+                    <width>481</width>
+                    <height>111</height>
+                </rect>
+            </property>
+            <property name="title">
+                <string>其他测试和功能</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+                <item row="0" column="1">
+                    <widget class="QPushButton" name="pushButton_utf16_conversion">
+                        <property name="text">
+                            <string>与UTF-16的转换</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="0" column="0">
+                    <widget class="QPushButton" name="pushButton_to_Latin1">
+                        <property name="text">
+                            <string>与Latin1的转换</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="1" column="0">
+                    <widget class="QPushButton" name="pushButton_qchar_judgement_and_replace">
+                        <property name="text">
+                            <string>QChar比较和替换</string>
+                        </property>
+                    </widget>
+                </item>
+                <item row="1" column="1">
+                    <widget class="QPushButton" name="pushButton_clear">
+                        <property name="text">
+                            <string>清空文本框</string>
+                        </property>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_character_judgement">
+            <property name="geometry">
+                <rect>
+                    <x>310</x>
+                    <y>240</y>
+                    <width>191</width>
+                    <height>341</height>
+                </rect>
+            </property>
+            <property name="title">
+                <string>QChar特性判断</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget_2">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>30</y>
+                        <width>161</width>
+                        <height>292</height>
+                    </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_4" columnstretch="0">
+                    <item row="5" column="0">
+                        <widget class="QCheckBox" name="checkBox_isMark">
+                            <property name="text">
+                                <string>isMark</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="0">
+                        <widget class="QCheckBox" name="checkBox_isUpper">
+                            <property name="text">
+                                <string>isUpper</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="6" column="0">
+                        <widget class="QCheckBox" name="checkBox_isSpace">
+                            <property name="text">
+                                <string>isSpace</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="0" column="0">
+                        <widget class="QCheckBox" name="checkBox_isDigit">
+                            <property name="text">
+                                <string>isDIgit</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="0">
+                        <widget class="QCheckBox" name="checkBox_isLetter">
+                            <property name="text">
+                                <string>isLetter</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="7" column="0">
+                        <widget class="QCheckBox" name="checkBox_isSymbol">
+                            <property name="text">
+                                <string>isSymbol</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="8" column="0">
+                        <widget class="QCheckBox" name="checkBox_isPunct">
+                            <property name="text">
+                                <string>isPunct</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="4" column="0">
+                        <widget class="QCheckBox" name="checkBox_isLower">
+                            <property name="text">
+                                <string>isLower</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="0">
+                        <widget class="QCheckBox" name="checkBox_isLetterOrNumber">
+                            <property name="text">
+                                <string>isLetterOrNumber</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_result_display">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>240</y>
+                    <width>281</width>
+                    <height>341</height>
+                </rect>
+            </property>
+            <property name="title">
+                <string>结果显示</string>
+            </property>
+            <widget class="QPlainTextEdit" name="plainTextEdit">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>40</y>
+                        <width>261</width>
+                        <height>291</height>
+                    </rect>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
 </ui>

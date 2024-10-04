@@ -224,7 +224,8 @@ Widget::TestQVariant() const {
     qDebug() << font_copy.toString();
 }
 
-inline void Widget::TestRandomGenerator() {
+inline void
+Widget::TestRandomGenerator() {
     /// 生成随机数，比较随机数因随机数种子而发生的变化
     const auto const_seed = QDateTime::currentMSecsSinceEpoch() - 1;
     const auto rand1      = new QRandomGenerator64(const_seed);
