@@ -1,0 +1,4 @@
+add_subdirectory(samp2_1)
+add_subdirectory(samp2_2)
+add_subdirectory(samp2_3)
+add_subdirectory(samp2_4_runtime_type_info)

@@ -1,0 +1,3 @@
+add_subdirectory(samp4_1_layout_visualization)
+add_subdirectory(samp4_2_qchar_function)
+add_subdirectory(samp4_3_qchar_test)

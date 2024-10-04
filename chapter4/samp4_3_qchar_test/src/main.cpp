@@ -4,15 +4,13 @@
 // if you have not received it or the program has a bug, please let me know:
 // <communicate_aaron@outlook.com>.
 
-#include "test.hpp"
-#include "../ui/mainwindow.h"
+#include "../ui/widget.h"
 
 #include <QApplication>
 
-auto main(int argc, char *argv[]) -> int {
-    test_qstring_and_qchar();
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    MainWindow   w;
+    Widget       w;
     w.show();
-    return QApplication::exec();
+    return a.exec();
 }
