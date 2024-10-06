@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(samp4_3_qchar_test VERSION 0.1 LANGUAGES CXX)
+project(samp4_4_qstring_function VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -9,12 +9,12 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-
 get_filename_component(SECONDARY_DIR "${PROJECT_SOURCE_DIR}/.." ABSOLUTE)
 get_filename_component(SECONDARY_DIR_NAME "${SECONDARY_DIR}" NAME)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../../bin/${SECONDARY_DIR_NAME})
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         src/main.cpp
@@ -24,37 +24,37 @@ set(PROJECT_SOURCES
 )
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(samp4_3_qchar_test
+    qt_add_executable(samp4_4_qstring_function
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
     )
     # Define target properties for Android with Qt 6 as:
-    #    set_property(TARGET samp4_3_qchar_test APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+    #    set_property(TARGET samp4_4_qstring_function APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
     #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
     # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else ()
     if (ANDROID)
-        add_library(samp4_3_qchar_test SHARED
+        add_library(samp4_4_qstring_function SHARED
                 ${PROJECT_SOURCES}
         )
         # Define properties for Android with Qt 5 after find_package() calls as:
         #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else ()
-        add_executable(samp4_3_qchar_test
+        add_executable(samp4_4_qstring_function
                 ${PROJECT_SOURCES}
         )
     endif ()
 endif ()
 
-target_link_libraries(samp4_3_qchar_test PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(samp4_4_qstring_function PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if (${QT_VERSION} VERSION_LESS 6.1.0)
-    set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.samp4_3_qchar_test)
+    set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.samp4_4_qstring_function)
 endif ()
-set_target_properties(samp4_3_qchar_test PROPERTIES
+set_target_properties(samp4_4_qstring_function PROPERTIES
         ${BUNDLE_ID_OPTION}
         MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
         MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -63,7 +63,7 @@ set_target_properties(samp4_3_qchar_test PROPERTIES
 )
 
 include(GNUInstallDirs)
-install(TARGETS samp4_3_qchar_test
+install(TARGETS samp4_4_qstring_function
         BUNDLE DESTINATION .
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -75,5 +75,5 @@ target_include_directories(${PROJECT_NAME}
 )
 
 if (QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(samp4_3_qchar_test)
+    qt_finalize_executable(samp4_4_qstring_function)
 endif ()

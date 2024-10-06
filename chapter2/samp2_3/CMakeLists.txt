@@ -19,6 +19,11 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 # 前者的动态写法，灵活确定的Qt版本
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+# 在顶层项目下以“bin/二级目录”方式生成可执行文件
+get_filename_component(SECONDARY_DIR "${PROJECT_SOURCE_DIR}/.." ABSOLUTE)
+get_filename_component(SECONDARY_DIR_NAME "${SECONDARY_DIR}" NAME)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../../bin/${SECONDARY_DIR_NAME})
+
 # 设置项目源文件列表
 set(PROJECT_SOURCES
         main.cpp
