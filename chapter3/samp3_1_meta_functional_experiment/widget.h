@@ -30,8 +30,8 @@ public:
     ~Widget() override;
 
 private:
-    TPerson *boy;
-    TPerson *girl;
+    TPerson *   boy;
+    TPerson *   girl;
     Ui::Widget *ui;
 
 private slots:
@@ -50,13 +50,13 @@ private slots:
 
     void print_properties(const QObject *obj) const;
 
-    static inline void TestContainer(); /// 关联容器
+    static void TestContainer(); /// 关联容器
 
-    static inline void TestIterator(); /// 迭代器
+    static void TestIterator(); /// 迭代器
 
     void TestQVariant() const; /// QVariant类
 
-    static inline void TestRandomGenerator();
+    static void TestRandomGenerator();
 };
 
 #endif

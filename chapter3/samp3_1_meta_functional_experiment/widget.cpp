@@ -126,7 +126,7 @@ Widget::print_properties(const QObject *obj) const {
     }
 }
 
-inline void
+void
 Widget::TestContainer() {
     QMultiMap<QString, int> num1, num2;
     num1.insert("rout", 100000);
@@ -140,7 +140,7 @@ Widget::TestContainer() {
     }
 }
 
-inline void
+void
 Widget::TestIterator() {
     /**
      * 1. 顺序容器
@@ -224,7 +224,7 @@ Widget::TestQVariant() const {
     qDebug() << font_copy.toString();
 }
 
-inline void
+void
 Widget::TestRandomGenerator() {
     /// 生成随机数，比较随机数因随机数种子而发生的变化
     const auto const_seed = QDateTime::currentMSecsSinceEpoch() - 1;
