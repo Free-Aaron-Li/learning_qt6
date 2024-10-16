@@ -5,8 +5,6 @@
 // <communicate_aaron@outlook.com>.
 
 #include "widget.h"
-
-
 #include "./ui_widget.h"
 
 Widget::Widget(QWidget *parent) :
