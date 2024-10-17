@@ -23,4 +23,7 @@ TestAsprintf();
 // 测试arg()函数
 void
 TestArg();
+// 测试setNum()函数
+void
+TestSetNum();
 #endif //TEST_HPP

@@ -12,7 +12,8 @@
 void
 TestItems() {
     //TestAsprintf();
-    TestArg();
+    //TestArg();
+    TestSetNum();
 }
 
 void
@@ -46,4 +47,19 @@ TestArg() {
     qDebug() << str1;
     qDebug() << str2;
     qDebug() << str3;
+}
+
+void
+TestSetNum() {
+    constexpr double num = 1234.56789;
+    QString          str;
+    qDebug("num=%f", num);   // 1234.567890
+    str.setNum(num, 'f', 5); // 小数点后5位【以自然计数法显示】1234.56789
+    qDebug("str=%s", str.toLocal8Bit().data());
+    str.setNum(num, 'E', 5); // 基数的小数点后5位【以科学计数法显示】1.23457E+03
+    qDebug("str=%s", str.toLocal8Bit().data());
+    str.setNum(num, 'g', 5); // 整数和小数总共5位【以自然计数法显示】1234.6
+    qDebug("str=%s", str.toLocal8Bit().data());
+    str.setNum(num, 'G', 3); // 整数小数总共3位【以自然计数法显示】1.23E+03
+    qDebug("str=%s", str.toLocal8Bit().data());
 }
