@@ -24,6 +24,9 @@ get_filename_component(SECONDARY_DIR "${PROJECT_SOURCE_DIR}/.." ABSOLUTE)
 get_filename_component(SECONDARY_DIR_NAME "${SECONDARY_DIR}" NAME)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../../bin/${SECONDARY_DIR_NAME})
 
+# 禁止输出qDebug()调试信息
+add_definitions(-DQT_NO_DEBUG_OUTPUT)
+
 # 设置项目源文件列表
 set(PROJECT_SOURCES
         main.cpp
