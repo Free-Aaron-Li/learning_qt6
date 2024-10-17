@@ -24,7 +24,17 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget() override;
 
+private slots:
+    // 计算总价
+    void on_pushButton_calculate_total_price_clicked() const;
+    // 十进制转换为其他进制
+    void on_pushButton_dec_conversion_clicked() const;
+    // 二进制转换为其他进制
+    void on_pushButton_bin_conversion_clicked() const;
+    // 十六进制转换为其他进制
+    void on_pushButton_hex_conversion_clicked() const;
+
 private:
     Ui::Widget *ui;
 };
-#endif // WIDGET_H
+#endif  // WIDGET_H
