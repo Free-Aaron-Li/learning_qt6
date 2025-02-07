@@ -15,6 +15,6 @@ main(int argc, char *argv[]) -> int {
     Widget       w;
     w.show();
     // 测试项
-    //TestItems();
+    TestItems();
     return QApplication::exec();
 }
